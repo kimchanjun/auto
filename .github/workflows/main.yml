@@ -16,6 +16,7 @@ jobs:
         shell: powershell
         run: |
           .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+          .\ngrok\ngrok.exe http -config /path/to/ngrok.yml 80
           Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
         env:
           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
